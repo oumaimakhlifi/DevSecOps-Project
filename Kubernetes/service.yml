@@ -5,14 +5,13 @@ metadata:
   labels:
     app: netflix-app
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: http
       port: 80
       targetPort: 80
     - name: metrics
-      port: 9100         # Port exposé sur le service
+      port: 9100         # Port exposé par le LoadBalancer
       targetPort: 9100   # Port sur lequel l'application écoute
-      nodePort: 30010    # Choisissez un port valide entre 30000-32767
   selector:
     app: netflix-app
